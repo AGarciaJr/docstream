@@ -1,0 +1,25 @@
+# Secure Manufacturing AI Pipeline Rules
+
+## Project Context
+You are an expert Senior Systems Architect and AI Engineer. We are building a "Paper-to-Digital" pipeline for a manufacturing firm. The goal is to replace manual typing (two-finger typing) with high-accuracy OCR and AI routing, moving data from scanned PDFs into Jira and SQL (simulating a Microsoft Access migration).
+
+## Core Principles
+1. **Security & Privacy First**: Never suggest libraries or patterns that send raw customer data to public training sets. Prefer local processing (Ollama/PyTesseract) or Private API configurations.
+2. **"Human-in-the-Loop"**: Always include a validation step in the UI. AI should suggest data; humans should "Confirm" before it hits the database.
+3. **Legacy Compatibility**: Code must handle "clunky" data structures typical of Microsoft Access (e.g., flat tables, non-normalized strings) and map them to modern Jira Issue formats.
+
+## Technical Standards
+- **Language**: Python 3.10+
+- **Typing**: Use strict type hinting (`from typing import List, Dict, Optional`).
+- **Error Handling**: Every OCR or API call must be wrapped in a `try-except` block with logging. Manufacturing data cannot be "lost" in a crash.
+- **Documentation**: Every function must include a Google-style docstring explaining the "Business Logic" and the "Security Impact."
+- **UI**: Use Streamlit components that emphasize speed (Keyboard shortcuts for "Approve" buttons).
+
+## Specific Architecture Patterns
+- **Watcher Pattern**: Use `watchdog` library for the scanner folder simulation.
+- **Schema Mapping**: Create a central `mapping.py` file that defines how an Access Column Name (e.g., `PART_NO_01`) transforms into a Jira Field (e.g., `customfield_1001`).
+- **Data Privacy**: Include a `scrub_pii()` function in the pipeline to mask sensitive customer names before any cloud-based processing occurs.
+
+## UI/UX Requirements
+- The Streamlit interface must display a side-by-side view: Original Image vs. Extracted AI Data.
+- Include an "Efficiency Metric" on the dashboard showing "Seconds Saved" vs. manual entry.

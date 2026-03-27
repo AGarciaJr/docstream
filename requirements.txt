@@ -1,0 +1,8 @@
+streamlit        # For the impressive UI 
+pytesseract      # For OCR (Reading the paper) 
+pdf2image        # To convert scans to images 
+watchdog         # To monitor the "Scanner" folder 
+pandas           # To handle Access-style data 
+jira             # To push data to Jira 
+python-dotenv    # To keep your API keys safe 
+reportlab        # To generate mock industrial PDFss
