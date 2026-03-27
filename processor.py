@@ -64,7 +64,8 @@ def extract_data_from_scan(file_path):
         "cert_id": c_match.group(1).split('\n')[0].strip() if c_match else "NOT FOUND",
         "status": "COMPLIANT" if "COMPLIANT" in raw_text.upper() else "NON-COMPLIANT",
         "file_name": os.path.basename(file_path),
-        "raw_text": raw_text
+        "raw_text": raw_text,
+        "image": image,
     }
 
 def process_batch(directory_path):
